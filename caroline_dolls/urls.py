@@ -23,7 +23,7 @@ urlpatterns = [
     path('privacy-terms/', TemplateView.as_view(template_name='terms.html'), name='terms'),
 ]
 
-BASE_DIR = Path(__file__).resolve().parent.parent  # ✅ Add this line
 if settings.DEBUG:
+    BASE_DIR = Path(__file__).resolve().parent.parent
     urlpatterns += static(settings.STATIC_URL, document_root=os.path.join(BASE_DIR, 'static'))
-    urlpatterns += static(settings.MEDIA_URL, document_root=os.path.join(BASE_DIR, 'media'))
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -24,7 +24,7 @@ class Product(models.Model):
     weight = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField()
     no_in_stock = models.IntegerField(null=True, blank=True)
-    image = models.ImageField(upload_to='products/main/')
+    image = models.ImageField(upload_to='gallery/')
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     rating = models.DecimalField(max_digits=4, decimal_places=1, null=True, blank=True)
@@ -61,7 +61,7 @@ class Product(models.Model):
 
 class ProductGallery(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='gallery_images')
-    image = models.ImageField(upload_to='products/gallery/')
+    image = models.ImageField(upload_to='gallery/')
 
     def __str__(self):
         return f"{self.product.name} - Gallery Image"

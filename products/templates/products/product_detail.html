@@ -82,8 +82,8 @@
                     .img-box{
                         padding: 2px;
                         border-radius: 10px;
-                        width: 25%;
-                        height: 100px;
+                        width: 20%;
+                        height: 90px;
                         overflow: hidden;
 
                         .img{
@@ -823,7 +823,7 @@
                             <div class="product-img">
                                 <img src="{{ item.image.url }}" class="img img-fluid img-thumpnail" alt="item.name">
                                 <button class="favourite" data-product-id="{{ product.id }}" >
-                                    <span class="material-symbols-outlined" style="">
+                                    <span class="material-symbols-outlined">
                                         favorite
                                     </span>
                                 </button>
@@ -876,8 +876,10 @@
                         <div class="product-card shadow">
                             <div class="product-img">
                                 <img src="{{ item.image.url }}" class="img img-fluid img-thumpnail" alt="Silicone Doll 1">
-                                <button class="favourite" id="add-favourite">
-                                    <span class="material-symbols-outlined">favorite</span>
+                               <button class="favourite" data-product-id="{{ product.id }}" >
+                                    <span class="material-symbols-outlined">
+                                        favorite
+                                    </span>
                                 </button>
                             </div>
                             <div class="product-details">

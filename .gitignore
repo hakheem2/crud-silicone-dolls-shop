@@ -20,7 +20,9 @@ db.sqlite3
 */migrations/*.pyo
 
 # Django static and media files
-media/
+/media/
+/media/gallery/
+
 *.log
 
 # Collected static files (created by collectstatic)

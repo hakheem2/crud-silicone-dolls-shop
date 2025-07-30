@@ -1,0 +1,44 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Django SQLite database (temporary for deployment — remove later)
+db.sqlite3
+
+# Django migrations (optional to ignore if you prefer)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+
+# Django static and media files
+media/
+*.log
+
+# Collected static files (created by collectstatic)
+staticfiles/
+
+# Local environment files
+.env
+
+# VSCode or PyCharm
+.vscode/
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Runtime
+*.pid
+
+# Railway build cache (optional)
+.build/
+

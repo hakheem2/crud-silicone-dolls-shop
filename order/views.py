@@ -13,6 +13,8 @@ from django.template.loader import render_to_string
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
+from ..caroline_dolls.settings import CSRF_TRUSTED_ORIGINS
+
 
 def checkout(request):
     # Get or create cart (adjust this as per your cart logic)
@@ -39,8 +41,7 @@ def checkout(request):
     })
 
 
-
-
+@csrf_exempt
 def process_checkout_form(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -109,7 +110,7 @@ def process_checkout_form(request):
 def send_order_email(order, cart_items, total):
     subject = f"New Order ORD-{order.order_number}"
     from_email = settings.DEFAULT_FROM_EMAIL
-    to_email = ['support@carolineheusssiliconedolls.com', 'anyengmondesonmbaubeh@gmail.com']
+    to_email = ['support@carolineheusssiliconedolls.com']
 
 
     #or add order.email if sending to customer

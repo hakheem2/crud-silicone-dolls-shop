@@ -21,6 +21,7 @@ db.sqlite3
 
 # Django static and media files
 /media/
+/gallery/
 /media/gallery/
 
 *.log

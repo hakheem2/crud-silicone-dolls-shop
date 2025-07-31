@@ -29,6 +29,49 @@
 
     {% endblock %}
 
+    <style>
+        .skeleton-wrapper {
+            position: relative;
+            background-color: #eee;
+            overflow: hidden;
+            border-radius: 8px;
+            min-height: 250px;
+        }
+
+        .skeleton-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150px;
+            height: 100%;
+            width: 150px;
+            background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+            animation: shimmer 1.2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Image initially hidden, fade in when loaded */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+            z-index: 2;
+            position: relative;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+    </style>
+
 </head>
 <body class="body" style="">
     <form method="POST">
@@ -268,6 +311,25 @@
                 });
             });
 
+        });
+
+         //laxy image loading
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll("img.lazy-image");
+
+            images.forEach(img => {
+            const wrapper = img.closest(".skeleton-wrapper");
+
+            if (img.complete) {
+                img.classList.add("loaded");
+                wrapper.classList.remove("skeleton-wrapper");
+            } else {
+                img.addEventListener("load", () => {
+                img.classList.add("loaded");
+                wrapper.classList.remove("skeleton-wrapper");
+                });
+            }
+            });
         });
         
     </script>

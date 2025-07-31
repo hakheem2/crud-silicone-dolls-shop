@@ -178,6 +178,7 @@
         }
 
     }
+        
     </style>
 {% endblock %}
 
@@ -357,8 +358,8 @@
                 {% for product in featured_products %}
                     <div class="product col-11 col-md-6 col-lg-3">
                         <div class="product-card shadow">
-                            <div class="product-img">
-                                <img src="{{ product.image.url }}" class="img img-fluid img-thumpnail" alt="Silicone Doll 1">
+                            <div class="product-img skeleton-wrapper">
+                                <img src="{{ product.image.url }}" class="img img-fluid lazy-image" loading="lazy" alt="Silicone Doll 1">
                                 <button class="favourite" data-product-id="{{ product.id }}" >
                                     <span class="material-symbols-outlined" style="">
                                         favorite
@@ -535,5 +536,7 @@
             });
         });
     </script>
+
+   
 
 {% endblock %}

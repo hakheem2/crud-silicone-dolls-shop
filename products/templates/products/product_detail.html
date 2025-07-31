@@ -652,14 +652,14 @@
                 <div class="column-1 col-12 col-md-6">
                     <div class="product-images">
                         <!-- Main Product Image -->
-                        <div class="main-image">
-                            <img src="{{ product.image.url }}" alt="{{ product.slug }}" class="img img-fluid" id="main-img">
+                        <div class="main-image skeleton-wrapper">
+                            <img src="{{ product.image.url }}" alt="{{ product.slug }}" class="img img-fluid lazy-image" id="main-img">
                         </div>
                         <!-- Side Images Thumbnails -->
                         <div class="side-images d-flex justify-content-between align-items-center">
                             {% for image in product.gallery_images.all %}
-                            <div class="img-box">
-                                <img src="{{ image.image.url }}" alt="{{ product.slug }}" class="img img-fluid galerry_image">
+                            <div class="img-box skeleton-wrapper">
+                                <img src="{{ image.image.url }}" alt="{{ product.slug }}" class="img img-fluid galerry_image lazy-image">
                             </div>
                             {% endfor %}
                         </div>

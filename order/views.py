@@ -13,8 +13,6 @@ from django.template.loader import render_to_string
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
-from ..caroline_dolls.settings import CSRF_TRUSTED_ORIGINS
-
 
 def checkout(request):
     # Get or create cart (adjust this as per your cart logic)

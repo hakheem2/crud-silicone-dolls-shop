@@ -6,7 +6,14 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 import os
 from pathlib import Path
+from django.contrib.sitemaps.views import sitemap
+from products.sitemaps import StaticViewSitemap, ProductSitemap  # adjust import path
 
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'products': ProductSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,6 +22,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('order/', include(('order.urls', 'order'), namespace='order')),
     path('', include('core.urls', namespace='core')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     # global pages
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),

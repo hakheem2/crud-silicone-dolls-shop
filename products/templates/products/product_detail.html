@@ -4,15 +4,40 @@
     {% block meta %}
         <title> Baby {{ product.name}} | Caroline Heuss Silicone Dolls</title>
         <meta property="og:title" content=" {{ product.name }} – Realistic Silicone Baby Doll">
-        <meta property="og:description" content="{{ product.description }}">
+        <meta property="og:description" content="product.description|truncatewords:25|escapejs">
          <meta property="og:image" content="https://carolineheusssiliconedolls.com/{{ product.image.url }}">
         <meta property="og:url" content="https://carolineheusssiliconedolls.com/products/product/{{product.name}}">
         <meta property="og:type" content="website">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{{ product.name }} – Realistic Silicone Baby Doll">
-        <meta name="twitter:description" content="Lifelike silicone doll crafted by Caroline Heuss. Handmade and perfect for collectors or gifting.">
+        <meta name="twitter:description" content="{{ product.description|truncatewords:25|escapejs }}">
         <meta name="twitter:image" content="https://carolineheusssiliconedolls.com/{{ product.image.url }}">
+
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              "name": "{{ product.name|escapejs }}",
+              "image": [
+                "{{ request.build_absolute_uri(product.image.url) }}"
+              ],
+              "description": "{{ product.description|truncatewords:25|escapejs }}",
+              "sku": "{{ product.sku|default:'SKU-000' }}",
+              "brand": {
+                "@type": "Brand",
+                "name": "Caroline Heuss"
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": "{{ request.build_absolute_uri }}",
+                "priceCurrency": "USD",
+                "price": "{{ product.price }}",
+                "availability": "https://schema.org/InStock"
+              }
+            }
+        </script>
+
     {% endblock %}
 
     {% block links %}

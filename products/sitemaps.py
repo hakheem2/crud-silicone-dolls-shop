@@ -3,30 +3,32 @@ from django.urls import reverse
 from .models import Product
 
 
+
+class HttpsSitemap(Sitemap):
+    def get_urls(self, page=1, site=None, protocol=None):
+        protocol = 'https'  # force https here
+        return super().get_urls(page=page, site=site, protocol=protocol)
+
 # Sitemap for static pages (simple URLs without parameters)
-class StaticViewSitemap(Sitemap):
+class StaticViewSitemap(HttpsSitemap):
     priority = 0.5
     changefreq = 'monthly'
 
     def items(self):
-        # List of URL pattern names for static pages only (no parameters)
-        return ['home', 'about', 'contact', 'product_list', 'blog', 'terms', 'faq']
+        return ['home', 'about', 'contact', 'product_list', 'product_detail', 'blog', 'terms', 'faq']
 
     def location(self, item):
-        return reverse(item)
+        return reverse(item)  # or your custom logic
 
-
-# Sitemap for dynamic product pages (with slug)
-class ProductSitemap(Sitemap):
+class ProductSitemap(HttpsSitemap):
     priority = 0.8
     changefreq = 'weekly'
 
     def items(self):
-        # Return active products queryset
-        return Product.objects.filter(available=True)
+        return Product.objects.filter(is_active=True)
 
     def lastmod(self, obj):
-        return obj.created_at
+        return obj.updated_at
 
     def location(self, item):
         # Pass slug for reversing the 'product_detail' URL

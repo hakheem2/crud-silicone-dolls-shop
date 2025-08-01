@@ -32,15 +32,15 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").replace('"', '').split(",")
 
 
-# SECURITY
-if os.getenv('DJANGO_ENV') == 'production':
-    #SECURE_SSL_REDIRECT = True  # Force HTTPS
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-
-SECURE_HSTS_SECONDS = 3600  # Optional, enable HTTP Strict Transport Security
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# # SECURITY
+# if os.getenv('DJANGO_ENV') == 'production':
+#     #SECURE_SSL_REDIRECT = True  # Force HTTPS
+#     SESSION_COOKIE_SECURE = True
+#     CSRF_COOKIE_SECURE = True
+#
+# SECURE_HSTS_SECONDS = 3600  # Optional, enable HTTP Strict Transport Security
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 
 CSRF_TRUSTED_ORIGINS = [

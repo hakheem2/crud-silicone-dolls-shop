@@ -22,8 +22,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('order/', include(('order.urls', 'order'), namespace='order')),
     path('', include('core.urls', namespace='core')),
-    path("sitemap.xml", sitemap, {"sitemaps": sitemaps, "protocol": "https"}, name="django.contrib.sitemaps.views.sitemap"),
-    # global pages
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),    # global pages
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('blog/', TemplateView.as_view(template_name='blog.html'), name='blog'),

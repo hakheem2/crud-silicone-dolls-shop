@@ -5,7 +5,7 @@
         <title> Baby {{ product.name}} | Caroline Heuss Silicone Dolls</title>
         <meta property="og:title" content=" {{ product.name }} – Realistic Silicone Baby Doll">
         <meta property="og:description" content="product.description|truncatewords:25|escapejs">
-         <meta property="og:image" content="https://carolineheusssiliconedolls.com/{{ product.image.url }}">
+        <meta property="og:image" content="https://carolineheusssiliconedolls.com/{{ product.image.url }}">
         <meta property="og:url" content="https://carolineheusssiliconedolls.com/products/product/{{product.name}}">
         <meta property="og:type" content="website">
 
@@ -20,7 +20,7 @@
               "@type": "Product",
               "name": "{{ product.name|escapejs }}",
               "image": [
-                "{{ request.build_absolute_uri(product.image.url) }}"
+                "https://carolineheusssiliconedolls.com/{{ product.image.url }}"
               ],
               "description": "{{ product.description|truncatewords:25|escapejs }}",
               "sku": "{{ product.sku|default:'SKU-000' }}",

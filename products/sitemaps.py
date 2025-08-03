@@ -15,7 +15,7 @@ class StaticViewSitemap(HttpsSitemap):
     changefreq = 'monthly'
 
     def items(self):
-        return ['home', 'about', 'contact', 'product_list', 'product_detail', 'blog', 'terms', 'faq']
+        return ['home', 'about', 'contact', 'product_list', 'blog', 'terms', 'faq']
 
     def location(self, item):
         return reverse(item)  # or your custom logic
@@ -25,10 +25,10 @@ class ProductSitemap(HttpsSitemap):
     changefreq = 'weekly'
 
     def items(self):
-        return Product.objects.filter(is_active=True)
+        return Product.objects.filter(available=True)
 
     def lastmod(self, obj):
-        return obj.updated_at
+        return obj.created_at
 
     def location(self, item):
         # Pass slug for reversing the 'product_detail' URL
